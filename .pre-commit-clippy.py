@@ -13,4 +13,5 @@ if os.name == "nt":
 result = subprocess.run(
     ["cargo", "clippy", "--all-targets", "--", "-D", "warnings", "--no-deps"]
 )
+
 exit(result.returncode)
