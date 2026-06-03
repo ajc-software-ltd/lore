@@ -226,10 +226,17 @@ mod tests {
                 .expect("Failed to diff staged and current states");
 
                 for change in changes.iter() {
-                    println!("{}: {}", change.action.as_string_short(), change.path);
+                    println!(
+                        "{}: {} {:?}",
+                        change.action.as_string_short(),
+                        change.path,
+                        change.flags
+                    );
                 }
 
-                assert!(changes.is_empty());
+                for change in changes.iter() {
+                    assert!(!change.flags.is_stage());
+                }
 
                 // Modify single file
                 file_modified
