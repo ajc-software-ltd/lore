@@ -22,17 +22,27 @@ theme:
     - toc.integrate
 
 extra_css:
-  - assets/css/eds.css
+  - assets/css/lore-docs.css
+
+exclude_docs: |
+  guides/
+  proposals/
+  specs/
+  tutorials/*-template.md
+  how-to/*-template.md
+  reference/*-template.md
+  explanation/*-template.md
+  developing/decisions/adr-template.md
+  # Bundled-font licensing notice — kept in-repo, excluded from the built site.
+  assets/**/*.md
 
 plugins:
   - search
+  - awesome-pages
   - section-index
-  - mkdocs-breadcrumbs-plugin:
-      use_page_titles: true
-      exclude_paths:
-        - "**"
 
 markdown_extensions:
+  - gfm_admonition
   - admonition
   - attr_list
   - md_in_html

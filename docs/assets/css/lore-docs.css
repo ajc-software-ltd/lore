@@ -1,0 +1,521 @@
+/* Lore docs — dark theme overlay for mkdocs-material. */
+
+/* ---------- Fonts ---------- */
+@font-face {
+  font-family: "Inter";
+  font-display: swap;
+  font-weight: 300;
+  src: local("Inter Light"), local("Inter-Light"),
+       url("../fonts/Inter-Light.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-display: swap;
+  font-weight: 400;
+  src: local("Inter Regular"), local("Inter-Regular"),
+       url("../fonts/Inter-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-display: swap;
+  font-weight: 500;
+  src: local("Inter Medium"), local("Inter-Medium"),
+       url("../fonts/Inter-Medium.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-display: swap;
+  font-weight: 700;
+  src: local("Inter Bold"), local("Inter-Bold"),
+       url("../fonts/Inter-Bold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Recursive Mono";
+  font-display: swap;
+  font-weight: 400;
+  src: local("Recursive Monospace Regular"),
+       url("../fonts/RecursiveMono-Regular.woff2") format("woff2-variations");
+}
+@font-face {
+  font-family: "Recursive Mono";
+  font-display: swap;
+  font-weight: 700;
+  src: local("Recursive Monospace Bold"),
+       url("../fonts/RecursiveMono-Bold.woff2") format("woff2-variations");
+}
+
+/* ---------- Dark token layer ---------- */
+:root {
+  /* Backgrounds */
+  --lore-bg-default:        #101014;
+  --lore-bg-elev-low:       #18181c;
+  --lore-bg-elev-med:       #202024;
+  --lore-bg-elev-high:      #303034;
+  --lore-bg-backdrop:       rgba(0, 0, 0, 0.65);
+
+  /* Fills */
+  --lore-fill-subtle:       rgba(255, 255, 255, 0.15);
+  --lore-fill-subdued:      rgba(255, 255, 255, 0.10);
+  --lore-fill-faint:        rgba(255, 255, 255, 0.05);
+  --lore-fill-input:        rgba(255, 255, 255, 0.05);
+
+  /* Borders */
+  --lore-border-strong:     rgba(255, 255, 255, 0.35);
+  --lore-border-subtle:     rgba(255, 255, 255, 0.15);
+  --lore-border-subdued:    rgba(255, 255, 255, 0.10);
+  --lore-border-faint:      rgba(255, 255, 255, 0.05);
+  --lore-border-focus:      #ffffff;
+
+  /* Foreground / text */
+  --lore-fg-primary:        rgba(255, 255, 255, 0.95);
+  --lore-fg-secondary:      rgba(255, 255, 255, 0.65);
+  --lore-fg-inverse:        rgba(0, 0, 0, 0.95);
+  --lore-fg-disabled:       rgba(255, 255, 255, 0.65);
+
+  /* Accent (links, primary brand) */
+  --lore-accent-primary:    #33bfff;
+  --lore-accent-secondary:  #69d0ff;
+  --lore-on-accent:         #0a2633;
+
+  /* Status */
+  --lore-success:           #5fe367;
+  --lore-success-secondary: #8aea90;
+  --lore-on-success:        #132d15;
+
+  --lore-warning:           #f7d82b;
+  --lore-warning-secondary: #f9e264;
+  --lore-on-warning:        #312b09;
+
+  --lore-critical:          #fd5e5e;
+  --lore-critical-secondary:#fe8989;
+  --lore-on-critical:       #331313;
+
+  /* Typography */
+  --md-text-font: "Inter", system-ui, -apple-system, sans-serif;
+  --md-code-font: "Recursive Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+
+/* ---------- Map tokens onto mkdocs-material variables (slate / dark) ---------- */
+[data-md-color-scheme="slate"] {
+  /* Surfaces */
+  --md-default-bg-color:               var(--lore-bg-default);
+  --md-default-bg-color--light:        var(--lore-bg-elev-low);
+  --md-default-bg-color--lighter:      var(--lore-bg-elev-med);
+  --md-default-bg-color--lightest:     var(--lore-bg-elev-high);
+
+  /* Text */
+  --md-default-fg-color:               var(--lore-fg-primary);
+  --md-default-fg-color--light:        var(--lore-fg-secondary);
+  --md-default-fg-color--lighter:      rgba(255, 255, 255, 0.45);
+  --md-default-fg-color--lightest:     rgba(255, 255, 255, 0.25);
+  --md-typeset-color:                  var(--lore-fg-primary);
+
+  /* Header / footer / nav */
+  --md-primary-fg-color:               var(--lore-bg-elev-low);
+  --md-primary-fg-color--light:        var(--lore-bg-elev-med);
+  --md-primary-fg-color--dark:         var(--lore-bg-default);
+  --md-primary-bg-color:               var(--lore-fg-primary);
+  --md-primary-bg-color--light:        var(--lore-fg-secondary);
+  --md-footer-bg-color:                var(--lore-bg-elev-low);
+  --md-footer-bg-color--dark:          var(--lore-bg-default);
+
+  /* Links / accents */
+  --md-accent-fg-color:                var(--lore-accent-primary);
+  --md-accent-fg-color--transparent:   rgba(51, 191, 255, 0.10);
+  --md-accent-bg-color:                var(--lore-on-accent);
+  --md-accent-bg-color--light:         var(--lore-accent-secondary);
+  --md-typeset-a-color:                var(--lore-accent-primary);
+
+  /* Code blocks */
+  --md-code-fg-color:                  var(--lore-fg-primary);
+  --md-code-bg-color:                  var(--lore-bg-elev-med);
+  --md-code-hl-color:                  rgba(51, 191, 255, 0.20);
+  --md-code-hl-number-color:           var(--lore-warning-secondary);
+  --md-code-hl-special-color:          var(--lore-critical-secondary);
+  --md-code-hl-function-color:         var(--lore-accent-secondary);
+  --md-code-hl-constant-color:         var(--lore-accent-secondary);
+  --md-code-hl-keyword-color:          var(--lore-success-secondary);
+  --md-code-hl-string-color:           var(--lore-warning);
+  --md-code-hl-name-color:             var(--lore-fg-primary);
+  --md-code-hl-operator-color:         var(--lore-fg-secondary);
+  --md-code-hl-punctuation-color:      var(--lore-fg-secondary);
+  --md-code-hl-comment-color:          var(--lore-fg-secondary);
+  --md-code-hl-generic-color:          var(--lore-fg-secondary);
+  --md-code-hl-variable-color:         var(--lore-fg-primary);
+
+  /* Admonitions / callouts — color stripe maps to status palette */
+  --md-admonition-fg-color:            var(--lore-fg-primary);
+  --md-admonition-bg-color:            var(--lore-bg-elev-low);
+
+  /* Tables */
+  --md-typeset-table-color:            var(--lore-border-subtle);
+  --md-typeset-table-color--light:     var(--lore-border-subdued);
+
+  /* Misc */
+  --md-shadow-z1: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --md-shadow-z2: 0 4px 8px rgba(0, 0, 0, 0.55);
+  --md-shadow-z3: 0 8px 24px rgba(0, 0, 0, 0.65);
+}
+
+/* Status colors per admonition kind */
+[data-md-color-scheme="slate"] .md-typeset .admonition.note,
+[data-md-color-scheme="slate"] .md-typeset details.note {
+  border-color: var(--lore-accent-primary);
+}
+[data-md-color-scheme="slate"] .md-typeset .admonition.note > .admonition-title,
+[data-md-color-scheme="slate"] .md-typeset details.note > summary {
+  background-color: rgba(51, 191, 255, 0.10);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .admonition.tip,
+[data-md-color-scheme="slate"] .md-typeset details.tip,
+[data-md-color-scheme="slate"] .md-typeset .admonition.success,
+[data-md-color-scheme="slate"] .md-typeset details.success {
+  border-color: var(--lore-success);
+}
+[data-md-color-scheme="slate"] .md-typeset .admonition.tip > .admonition-title,
+[data-md-color-scheme="slate"] .md-typeset details.tip > summary,
+[data-md-color-scheme="slate"] .md-typeset .admonition.success > .admonition-title,
+[data-md-color-scheme="slate"] .md-typeset details.success > summary {
+  background-color: rgba(95, 227, 103, 0.10);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .admonition.warning,
+[data-md-color-scheme="slate"] .md-typeset details.warning {
+  border-color: var(--lore-warning);
+}
+[data-md-color-scheme="slate"] .md-typeset .admonition.warning > .admonition-title,
+[data-md-color-scheme="slate"] .md-typeset details.warning > summary {
+  background-color: rgba(247, 216, 43, 0.10);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .admonition.danger,
+[data-md-color-scheme="slate"] .md-typeset details.danger,
+[data-md-color-scheme="slate"] .md-typeset .admonition.failure,
+[data-md-color-scheme="slate"] .md-typeset details.failure,
+[data-md-color-scheme="slate"] .md-typeset .admonition.bug,
+[data-md-color-scheme="slate"] .md-typeset details.bug {
+  border-color: var(--lore-critical);
+}
+[data-md-color-scheme="slate"] .md-typeset .admonition.danger > .admonition-title,
+[data-md-color-scheme="slate"] .md-typeset details.danger > summary,
+[data-md-color-scheme="slate"] .md-typeset .admonition.failure > .admonition-title,
+[data-md-color-scheme="slate"] .md-typeset details.failure > summary,
+[data-md-color-scheme="slate"] .md-typeset .admonition.bug > .admonition-title,
+[data-md-color-scheme="slate"] .md-typeset details.bug > summary {
+  background-color: rgba(253, 94, 94, 0.10);
+}
+
+/* ---------- Search input ---------- */
+[data-md-color-scheme="slate"] .md-search {
+  padding: .2rem .8rem;
+}
+[data-md-color-scheme="slate"] .md-search__form {
+  background-color: var(--lore-fill-input);
+  border: 1px solid var(--lore-border-strong);
+  border-radius: 9999px;
+  height: 1.7rem;
+  padding-inline: 0.75rem;
+  transition: border-color .12s, background-color .12s, outline-color .12s;
+}
+[data-md-color-scheme="slate"] .md-search__form:hover:not(:focus-within) {
+  background-color: var(--lore-fill-input);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+[data-md-color-scheme="slate"] .md-search__form:focus-within {
+  background-color: var(--lore-fill-input);
+  border-color: var(--lore-border-strong);
+  outline: 2px solid var(--lore-border-focus);
+  outline-offset: 2px;
+}
+
+[data-md-color-scheme="slate"] .md-search__input {
+  background-color: transparent;
+  color: var(--lore-fg-primary);
+  border-radius: 9999px;
+  padding-left: 1.75rem;
+  padding-right: 1rem;
+  font-size: 0.7rem;
+}
+[data-md-color-scheme="slate"] .md-search__input::placeholder {
+  color: var(--lore-fg-secondary);
+  opacity: 1;
+}
+
+[data-md-color-scheme="slate"] .md-search__icon {
+  color: var(--lore-fg-secondary);
+}
+[data-md-color-scheme="slate"] .md-search__icon:hover {
+  color: var(--lore-fg-primary);
+}
+[data-md-color-scheme="slate"] .md-search__icon.md-icon {
+  display: flex;
+  justify-content: center;
+}
+
+[data-md-color-scheme="slate"] .md-main__inner {
+  margin-top: 0;
+}
+
+/* Body / content base size */
+[data-md-color-scheme="slate"] .md-typeset {
+  font-size: 0.7rem;
+}
+
+/* Headings h1–h3: Inter Bold, pure white */
+[data-md-color-scheme="slate"] .md-typeset :is(h1, h2, h3) {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-weight: 700;
+  color: #fff;
+}
+[data-md-color-scheme="slate"] .md-typeset h1 {
+  margin: 0;
+}
+
+/* Glossary page h2 overrides */
+[data-md-color-scheme="slate"] .md-typeset h1#lore-glossary ~ h2 {
+  font-size: 1.7rem;
+  margin: 0;
+}
+
+/* Subtle borders for code blocks and tables */
+[data-md-color-scheme="slate"] .md-typeset pre > code,
+[data-md-color-scheme="slate"] .md-typeset code {
+  border: 1px solid var(--lore-border-faint);
+}
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) {
+  border: 1px solid var(--lore-border-subtle);
+}
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
+  background-color: var(--lore-bg-elev-low);
+}
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) tr {
+  border-top: 1px solid var(--lore-border-subdued);
+}
+
+/* ---------- Card grid (Figma node 845:4820 — "Working with Lore" cards) ---------- */
+[data-md-color-scheme="slate"] .md-typeset .card-grid > ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 0.8rem;
+}
+[data-md-color-scheme="slate"] .md-typeset .card-grid > ul > li {
+  background-color: var(--lore-fill-faint);
+  border: 1px solid var(--lore-border-faint);
+  border-radius: 1.2rem;
+  padding: 1rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+[data-md-color-scheme="slate"] .md-typeset .card-grid > ul > li > p {
+  margin: 0;
+}
+[data-md-color-scheme="slate"] .md-typeset .card-grid > ul > li > p:first-of-type a {
+  color: var(--lore-fg-primary);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  text-decoration: none;
+}
+[data-md-color-scheme="slate"] .md-typeset .card-grid > ul > li > p:first-of-type a:hover {
+  color: var(--lore-accent-primary);
+}
+[data-md-color-scheme="slate"] .md-typeset .card-grid > ul > li > p:not(:first-of-type) {
+  color: var(--lore-fg-secondary);
+  font-size: 0.7rem;
+  line-height: 1.43;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Layout overrides ---------- */
+[data-md-color-scheme="slate"] .md-main {
+  background: linear-gradient(to bottom, rgb(38, 57, 43) 0%, rgb(16, 16, 20) 20%);
+}
+
+/* Disable the scroll-driven title swap — always show the site title. */
+[data-md-color-scheme="slate"] .md-header__title--active .md-header__topic {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+  z-index: 0;
+}
+[data-md-color-scheme="slate"] .md-header__title--active .md-header__topic + .md-header__topic {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.md-sidebar {
+  height: 100%;
+}
+
+.md-content__inner.md-typeset > p:first-child,
+.md-content__inner.md-typeset > p:first-child a {
+  color: #fff;
+  font-weight: 700;
+}
+
+[data-md-color-scheme="slate"] .md-sidebar {
+  background-color: #18181c;
+}
+
+.md-nav {
+  font-size: 0.6rem;
+}
+
+[dir="ltr"] .md-nav--primary .md-nav__item > .md-nav__link {
+  color: rgb(255, 255, 255, 0.65);
+}
+
+[dir="ltr"] .md-nav--primary .md-nav__item > .md-nav__link.md-nav__link--active,
+[dir="ltr"] .md-nav--primary .md-nav__item > .md-nav__link.md-nav__link--active code {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+[data-md-color-scheme="slate"] .md-nav--primary .md-nav__title,
+[data-md-color-scheme="slate"] .md-nav--secondary .md-nav__title {
+  background: none;
+  box-shadow: none;
+}
+
+[data-md-color-scheme="slate"] .md-nav__title {
+  display: none;
+}
+
+[data-md-color-scheme="slate"] .md-header__title .md-ellipsis {
+  display: none;
+}
+
+[data-md-color-scheme="slate"] .md-grid {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: none;
+}
+
+[data-md-color-scheme="slate"] .md-content {
+  min-width: 0;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+  height: 1.5rem;
+}
+
+@media screen and (max-width: 76.234375em) {
+  .md-header__button.md-logo {
+    display: inline-block;
+  }
+  .md-header__button.md-icon[for="__drawer"] {
+    order: -1;
+  }
+
+  /* Reset Material's slide-in-panel layout for ALL nav elements inside the drawer.
+     Material sets .md-nav { display: flex; height: 100% } and .md-nav__list { flex: 1 }
+     so each sub-panel fills the column. With inline expansion those rules cause every
+     nested .md-nav (including the integrated TOC's per-section navs) to eat the full
+     drawer height, hiding sibling items behind it. Force everything to auto-height
+     block layout instead. */
+  .md-nav--primary,
+  .md-nav--primary .md-nav {
+    position: static;
+    transform: none;
+    visibility: visible;
+    height: auto;
+    display: block;
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+  }
+  /* Match Material's `.md-nav__title ~ .md-nav__list` specificity (0,3,0) so we beat
+     the snap-scroll behavior, which would otherwise create huge scroll gaps. */
+  .md-nav--primary .md-nav__list,
+  .md-nav--primary .md-nav__title ~ .md-nav__list {
+    flex: none;
+    overflow: visible;
+    overflow-y: visible;
+    scroll-snap-type: none;
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  /* Sub-navs that follow a toggle are collapsed by default; show on :checked. */
+  .md-nav--primary .md-nav__toggle ~ .md-nav {
+    display: none;
+  }
+  .md-nav--primary .md-nav__toggle:checked ~ .md-nav {
+    display: block;
+  }
+
+  /* Show the integrated TOC for the active page (same as desktop). Material's
+     mobile rules set display:flex on the TOC but leave opacity:0 — the
+     opacity:1 counterpart sits inside an @media (min-width:76.25em) block and
+     never fires on mobile. Override both so the TOC is actually visible. The
+     0,3,1 specificity matches Material's display rule; source order wins. */
+  .md-nav--primary .md-nav__link[for="__toc"] ~ .md-nav {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+  }
+  /* Material hides the active page's anchor at very narrow widths (it expects
+     the for="__toc" label to take its place, but we hide that label). Restore
+     the anchor so the active page name renders alongside its sublinks. */
+  .md-nav--primary .md-nav__link[for="__toc"] + .md-nav__link {
+    display: flex;
+  }
+
+  /* Hide the drawer's title bar (site name + close button) at the top. */
+  .md-nav--primary > .md-nav__title {
+    display: none;
+  }
+
+  /* Hide the duplicate active-page label (it exists only to toggle the TOC). */
+  .md-nav--primary > .md-nav__list > .md-nav__item--active > .md-nav__link[for="__toc"] {
+    display: none;
+  }
+
+  /* Hide the "Table of contents" header row inside the integrated TOC. */
+  .md-nav--primary .md-nav--secondary > .md-nav__title {
+    display: none;
+  }
+
+  /* Indent each nested level of nav links, matching the desktop tree. */
+  .md-nav--primary .md-nav .md-nav__link {
+    padding-left: 1.6rem;
+  }
+  .md-nav--primary .md-nav .md-nav .md-nav__link {
+    padding-left: 2.4rem;
+  }
+  .md-nav--primary .md-nav .md-nav .md-nav .md-nav__link {
+    padding-left: 3.2rem;
+  }
+
+  /* Chevron: collapsed → right (▸), expanded → down (▾). */
+  .md-nav--primary .md-nav__link .md-nav__icon::after {
+    transition: transform 0.25s;
+  }
+  .md-nav--primary .md-nav__toggle:checked ~ .md-nav__link .md-nav__icon::after {
+    transform: rotate(90deg);
+  }
+
+  /* Strip Material's mobile dividers and match desktop font + spacing. */
+  .md-nav--primary .md-nav__item {
+    font-size: 0.6rem;
+    line-height: 1.4;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+  }
+  .md-nav--primary .md-nav__link {
+    margin-top: 0;
+    padding: 0.3rem 0.8rem;
+  }
+}
