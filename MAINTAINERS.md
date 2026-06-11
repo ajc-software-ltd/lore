@@ -6,7 +6,7 @@ Core Maintainers are responsible for project direction, security, and releases. 
 
 | Name | GitHub |
 | --- | --- |
-| | |
+| Mattias Jansson | [@mjansson](https://github.com/mjansson) |
 
 ## Maintainers
 
