@@ -92,3 +92,5 @@ Security patches are provided for the two most recent stable releases. Older rel
 ## Bug bounty
 
 Epic maintains a public bug bounty program on [HackerOne](https://hackerone.com/epicgames). Lore is included in the program scope. Bounty amounts are defined on the HackerOne program page and depend on severity and impact.
+
+Note: If you are seeking to disclose a vulnerability with no bounty then please review our [Vulnerability Disclosure Program](https://hackerone.com/epicgames-vdp).
